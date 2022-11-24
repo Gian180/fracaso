@@ -1,0 +1,5 @@
+IP_DB = "localhost"
+PORT_DB ="5432"
+DBNAME_BDB ="nombreBD"
+USER_DB ="postgres"
+PASSWORD_DB = "root"
