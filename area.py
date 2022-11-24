@@ -3,16 +3,12 @@ from tkinter import *
 from registro import *
 from database import DataBase
 
-OPCIONES = ['clientes', 'usuarios']
+OPCIONES = ['CLIENTES', 'USUARIOS']
 
 class Area(DataBase):
     esquema = DataBase()
-    tabla_name = "usuarios"
+    tabla_name = "USUARIOS"
     lista_objetos_registro = []
-    
-
-
-
 
     def __init__(self,ventana):
         super().__init__()
@@ -39,7 +35,7 @@ class Area(DataBase):
         self.generar_lista()
 
     def dibujar_area(self, pos_y,lista_data):
-        nuevo_registro = Registro(lista_data,self.contenedor,pos_y)
+        nuevo_registro = Registro(lista_data,self.contenedor,pos_y, Area.tabla_name)
         return nuevo_registro
 
     #GENERA es espacio donde estan los registros
@@ -58,6 +54,8 @@ class Area(DataBase):
 
 
     def cambiar_lista_registros(self):
+        Area.lista_objetos_registro = []
+        Area.tabla_name = self.opciones.get()
         self.contenedor.destroy()
         self.contenedor = Frame(self.plantilla, width='1500', height='400')
         self.contenedor.place(x=5,y=200)

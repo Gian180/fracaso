@@ -13,3 +13,12 @@ class DataBase:
         self.records = self.cur.fetchall()
         
         return self.records
+
+
+    def delete_data(self,nombre_tabla, id_user):
+        self.cur = self.conn.cursor()
+        self.consulta = f"DELETE FROM {nombre_tabla} WHERE iden = {id_user}"
+        
+        self.a = self.cur.execute(self.consulta)
+        print(f"DELETE from {nombre_tabla} WHERE IDEN = 5")
+        print(self.a)
